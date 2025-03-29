@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Календарь эмоций</title>
+  <link rel="stylesheet" href="./css/content.css">
+</head>
+<body>
+  <div class="marquee">
+    <span id="marquee-text"></span>
+  </div>
+
+  <div class="calendar-container">
+    <div class="calendar-header">
+      <button class="month-button" id="prev-month">◀</button>
+      <div class="month" id="calendar-month">Февраль</div>
+      <div class="year" id="calendar-year">2025</div>
+      <button class="month-button" id="next-month">▶</button>
+    </div>
+
+    <table class="calendar">
+      <thead>
+        <tr>
+          <th>Пн</th>
+          <th>Вт</th>
+          <th>Ср</th>
+          <th>Чт</th>
+          <th>Пт</th>
+          <th>Сб</th>
+          <th>Вс</th>
+        </tr>
+      </thead>
+      <tbody id="calendar-body"></tbody>
+    </table>
+  </div>
+
+  <div class="day-panel" id="day-panel">
+    <button class="close-btn">×</button>
+    <h3 id="selected-date">Выбранный день</h3>
+  </div>
+   
+  <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Anonymous Pro', monospace;
+  }
+  
+  .marquee {
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 2px solid black;
+    font-style: italic;
+    font-size: 16px;
+    padding: 8px 0;
+  }
+  
+  .marquee span {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee-scroll 20s linear infinite;
+    min-width: 100%;
+  }
+  
+  @keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  
+  .calendar-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+  
+  .calendar {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+  
+  .calendar td,
+  .calendar th {
+    width: 14.28%;
+    height: 100px;
+    vertical-align: top;
+    padding: 4px;
+    position: relative;
+    box-sizing: border-box;
+    border: 1.5px solid black;
+    cursor: pointer;
+  }
+  
+  .calendar td.inactive {
+    cursor: default;
+    background-color: #f0f0f0;
+    color: #ccc;
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0;
+  }
+  
+  .date-number {
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .day-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #f8f8f8;
+    border-top: 2px solid black;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    font-family: 'Anonymous Pro', monospace;
+  }
+  
+  .close-btn {
+    align-self: flex-end;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }  
+  
+  .day-panel button {
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .day-panel.active {
+    transform: translateY(0);
+  }
+  
+  #selected-date {
+    font-size: 32px;
+    color: black;
+    font-family: 'Anonymous Pro', monospace;
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  
+  .month-button {
+    font-size: 18px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
