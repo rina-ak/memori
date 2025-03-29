@@ -2,7 +2,9 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Календарь эмоций</title>
+  <title>Календарь воспоминаний</title>
+  <link rel="icon" href="./favicon.svg">
+  <script src="script.js" defer></script>
   <link rel="stylesheet" href="./css/content.css">
 </head>
 <body>
@@ -34,11 +36,33 @@
     </table>
   </div>
 
-  <div class="day-panel" id="day-panel">
-    <button class="close-btn">×</button>
+ <div class="day-panel" id="day-panel">
+    <button onclick="document.getElementById('day-panel').classList.remove('active')" class="close-btn">×</button>
     <h3 id="selected-date">Выбранный день</h3>
+
+    <h4>Выберите эмоцию:</h4>
+    <div class="emotions">
+      <button onclick="selectEmotion('emo1')"><img src="img/emo1.png" alt="emo1"></button>
+      <button onclick="selectEmotion('emo2')"><img src="img/emo2.png" alt="emo2"></button>
+      <button onclick="selectEmotion('emo3')"><img src="img/emo3.png" alt="emo3"></button>
+      <button onclick="selectEmotion('emo4')"><img src="img/emo4.png" alt="emo4"></button>
+      <button onclick="selectEmotion('emo5')"><img src="img/emo5.png" alt="emo5"></button>
+      <button onclick="selectEmotion('emo6')"><img src="img/emo6.png" alt="emo6"></button>
+      <button onclick="selectEmotion('emo7')"><img src="img/emo7.png" alt="emo7"></button>
+      <button onclick="selectEmotion('emo8')"><img src="img/emo8.png" alt="emo8"></button>
+    </div>
+
+    <h4>Выберите погоду:</h4>
+    <div class="weather">
+      <button onclick="selectWeather('weat1')"><img src="img/weat1.png" alt="weat1"></button>
+      <button onclick="selectWeather('weat2')"><img src="img/weat2.png" alt="weat2"></button>
+      <button onclick="selectWeather('weat3')"><img src="img/weat3.png" alt="weat3"></button>
+      <button onclick="selectWeather('weat4')"><img src="img/weat4.png" alt="weat4"></button>
+      <button onclick="selectWeather('weat5')"><img src="img/weat5.png" alt="weat5"></button>
+      <button onclick="selectWeather('weat6')"><img src="img/weat6.png" alt="weat6"></button>
+    </div>
+
+    <button onclick="saveToCell()" class="add-entry-btn">Добавить запись</button>
   </div>
-   
-  <script src="./script.js"></script>
 </body>
 </html>

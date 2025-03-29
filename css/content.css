@@ -120,3 +120,29 @@ body {
     cursor: pointer;
   }
   
+  .emotions img, .weather img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .emotions img:hover, .weather img:hover {
+    transform: scale(1.2);
+  }
+  
+  .weather, .emotions {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  .add-entry-btn {
+    padding: 6px 12px;
+    border: 1.5px solid black;
+    background: #fff;
+    cursor: pointer;
+    font-family: 'Anonymous Pro', monospace;
+    font-size: 14px;
+    margin-top: 10px;
+  }

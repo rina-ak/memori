@@ -24,7 +24,7 @@ const generateCalendar = (year, month) => {
   const firstWeekday = (firstDay.getDay() + 6) % 7;
 
   let date = 1;
-  calendarBody.innerHTML = ''; 
+  calendarBody.innerHTML = ''; // Очистка старых данных
   for (let i = 0; i < 6; i++) {
     const row = document.createElement('tr');
     for (let j = 0; j < 7; j++) {
@@ -40,11 +40,14 @@ const generateCalendar = (year, month) => {
         cell.appendChild(numberDiv);
 
         const currentDate = date;
+        cell.setAttribute('data-date', `${year}-${month + 1}-${date}`);  // Добавляем атрибут с датой в формате 'год-месяц-день'
+
         cell.addEventListener('click', () => {
           if (selectedCell) selectedCell.classList.remove('selected');
           selectedCell = cell;
           selectedCell.classList.add('selected');
           panel.classList.add('active');
+
           const selectedDate = new Date(year, month, currentDate);
           const formatter = new Intl.DateTimeFormat('ru-RU', {
             weekday: 'long',
@@ -69,6 +72,7 @@ const generateCalendar = (year, month) => {
   monthDisplay.textContent = months[month];
   yearDisplay.textContent = year;
 };
+
 
 const openPanel = () => {
   panel.classList.add('active');
@@ -136,3 +140,53 @@ document.querySelector('#prev-month').addEventListener('click', prevMonth);
 
 generateCalendar(currentYear, currentMonth);
 updateMarquee();
+
+let selectedEmotion = null;  
+let selectedWeather = null;  
+
+
+const selectEmotion = (emotion) => {
+  selectedEmotion = emotion; 
+  console.log("Выбрана эмоция:", selectedEmotion);
+};
+
+
+const selectWeather = (weather) => {
+  selectedWeather = weather; 
+  console.log("Выбрана погода:", selectedWeather);
+};
+
+const saveToCell = () => {
+  if (!selectedEmotion || !selectedWeather) {
+    alert("Пожалуйста, выберите эмоцию и погоду.");
+    return;
+  }
+
+  const cell = document.querySelector(`td.selected`);
+
+  if (cell) {
+
+    const emotionImg = document.createElement('img');
+    emotionImg.src = `img/${selectedEmotion}.png`;
+    emotionImg.alt = selectedEmotion;
+    emotionImg.classList.add('emotion-thumbnail');
+
+    const weatherImg = document.createElement('img');
+    weatherImg.src = `img/${selectedWeather}.png`;
+    weatherImg.alt = selectedWeather;
+    weatherImg.classList.add('weather-thumbnail');
+
+    cell.appendChild(emotionImg);
+    cell.appendChild(weatherImg);
+  }
+
+  document.getElementById('day-panel').classList.remove('active');
+};
+
+document.querySelectorAll('.calendar td').forEach((cell) => {
+  cell.addEventListener('click', () => {
+    document.querySelectorAll('.calendar td').forEach((el) => el.classList.remove('selected'));
+    cell.classList.add('selected');  
+    document.getElementById('day-panel').classList.add('active'); 
+  });
+});
